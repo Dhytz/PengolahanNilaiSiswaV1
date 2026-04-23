@@ -395,62 +395,88 @@
     /* FOOTER WRAPPER */
     .site-footer {
         padding: 40px 18px 24px;
+        text-align: center !important;
     }
 
-    /* FOOTER INNER: ubah dari 3 kolom → 1 kolom */
+    /* FOOTER INNER: ubah dari 3 kolom → 1 kolom, rata tengah */
     .footer-inner {
         display: flex !important;
         flex-direction: column !important;
+        align-items: center !important;
         gap: 32px !important;
         grid-template-columns: unset !important;
+        text-align: center !important;
+    }
+
+    /* Setiap kolom di dalam footer-inner juga center */
+    .footer-inner > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center !important;
     }
 
     /* KOLOM PERTAMA (logo & deskripsi) */
     .footer-logo {
         font-size: 1.1rem !important;
-        text-align: center;
+        text-align: center !important;
     }
 
     .footer-desc {
         font-size: 0.78rem !important;
         line-height: 1.6 !important;
-        text-align: center;
+        text-align: center !important;
+        max-width: 320px;
     }
 
     .footer-tagline {
         justify-content: center !important;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
     }
 
     /* KOLOM KEDUA (Anggota Kelompok) */
     .footer-col-title {
-        display: block;
+        display: block !important;
         font-size: 0.68rem !important;
         letter-spacing: 2.5px !important;
         margin-bottom: 14px !important;
+        text-align: center !important;
+        width: 100%;
     }
 
     .footer-member {
         font-size: 0.82rem !important;
-        line-height: 1.5;
-        margin-bottom: 6px;
-        display: flex;
-        align-items: flex-start;
-        gap: 6px;
-        flex-wrap: wrap;
+        line-height: 1.6 !important;
+        margin-bottom: 6px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+        text-align: center !important;
+        width: 100%;
     }
 
-    /* === KOLOM KETIGA (Informasi) === */
+    .footer-member-dot {
+        flex-shrink: 0;
+    }
+
+    /* KOLOM KETIGA (Informasi) */
     .footer-info-row {
         display: flex !important;
         align-items: flex-start !important;
+        justify-content: center !important;
         gap: 8px !important;
         font-size: 0.8rem !important;
         line-height: 1.5 !important;
         margin-bottom: 8px !important;
         flex-wrap: nowrap !important;
+        width: 100%;
+        max-width: 340px;
+        text-align: left !important; /* teks info tetap kiri agar mudah dibaca, tapi blok-nya center */
     }
 
     .footer-info-row span:last-child {
@@ -461,6 +487,7 @@
     .footer-info-icon {
         flex-shrink: 0;
         width: 20px;
+        text-align: center;
     }
 
     /* FOOTER BOTTOM */
@@ -468,14 +495,17 @@
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        justify-content: center !important;
         gap: 12px !important;
         text-align: center !important;
         padding-top: 20px !important;
+        width: 100% !important;
     }
 
     .footer-copy {
         font-size: 0.72rem !important;
-        line-height: 1.6;
+        line-height: 1.6 !important;
+        text-align: center !important;
     }
 
     /* Chips di footer bottom */
@@ -483,13 +513,14 @@
         display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
+        align-items: center !important;
         gap: 8px !important;
     }
 
     .footer-chip {
         font-size: 0.7rem !important;
         padding: 6px 12px !important;
-        white-space: nowrap;
+        white-space: nowrap !important;
     }
 }
 
@@ -501,6 +532,7 @@
 
     .footer-info-row {
         font-size: 0.75rem !important;
+        max-width: 100%;
     }
 
     .footer-member {
