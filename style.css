@@ -375,6 +375,12 @@
             .footer-bottom {
                 Flex-direction:column; align-items:flex-start; gap:14px;
             }
+            .footer-inner > div { text-align:center; }
+            .footer-tagline { justify-content:center; }
+            .footer-member { justify-content:center; }
+            .footer-info-row { justify-content:center; }
+            .footer-col-title { text-align:center; }
+            .footer-desc { text-align:center; }
             .footer-copy { font-size:0.7rem; }
             .footer-chip { font-size:0.65rem; padding:4px 10px; }
         }
