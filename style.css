@@ -314,73 +314,335 @@
         .empty-state-icon { font-size:2.8rem; margin-bottom:10px; opacity:0.4; }
         .empty-state-text { font-size:0.82rem; letter-spacing:2px; text-transform:uppercase; }
 
-        /* FOOTER / KAKI HALAMAN */
+                /* FOOTER */
         .site-footer {
-            Margin-top:60px;
-            Background:var(--glass);
-            Border-top:1px solid var(--glass-border);
-            Backdrop-filter:blur(20px);
-            Padding:50px 40px 30px;
+            position: relative;
+            margin-top: 20px;
+            padding: 52px 20px 32px;
+            overflow: hidden;
+        }
+        .site-footer::before {
+            content: '';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: min(800px, 90%); height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent), var(--accent-purple), transparent);
+            opacity: 0.35;
+        }
+        .site-footer::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5;
         }
         .footer-inner {
-            Display:grid;
-            Grid-template-columns:1.5fr 1fr 1.5fr;
-            Gap:40px;
-            Max-width:900px;
-            Margin:0 auto 30px;
+            position: relative; z-index: 1;
+            max-width: 900px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
         }
-        .footer-logo { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; text-transform:uppercase; letter-spacing:-0.5px; color:var(--text); margin-bottom:12px; }
-        .footer-desc { font-size:0.78rem; color:var(--text-muted); line-height:1.7; margin-bottom:16px; }
-        .footer-tagline { display:flex; align-items:center; gap:8px; font-size:0.7rem; color:var(--accent); font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
-        .footer-tagline-dot { width:7px; height:7px; background:var(--accent); border-radius:50%; animation:pulse 2s infinite; }
-        .footer-col-title { display:block; font-size:0.65rem; letter-spacing:2.5px; color:var(--text-muted); text-transform:uppercase; font-weight:700; margin-bottom:16px; }
-        .footer-member { font-size:0.82rem; color:var(--text-muted); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-        .footer-member-dot { width:4px; height:4px; background:var(--accent); border-radius:50%; flex-shrink:0; }
-        .footer-info-row { display:flex; align-items:flex-start; gap:10px; font-size:0.79rem; color:var(--text-muted); margin-bottom:10px; line-height:1.5; }
-        .footer-info-icon { font-size:0.9rem; flex-shrink:0; margin-top:1px; }
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: -0.5px;
+            background: linear-gradient(to right, var(--text), var(--accent), var(--accent-purple));
+            background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+            margin-bottom: 12px; display: inline-block;
+        }
+        .footer-desc {
+            font-size: 0.8rem; color: var(--text-muted);
+            line-height: 1.75; max-width: 230px;
+        }
+        .footer-tagline {
+            display: inline-flex; align-items: center; gap: 7px;
+            margin-top: 16px; padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            font-size: 0.68rem; color: var(--text-muted);
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+        .footer-tagline-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 7px #22c55e;
+            animation: pulse 2s infinite;
+        }
+        .footer-col-title {
+            font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
+            font-weight: 700; color: var(--accent);
+            margin-bottom: 16px; display: block;
+        }
+        .footer-member {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.82rem; color: var(--text-muted);
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .footer-member:hover { color: var(--text); }
+        .footer-member-dot {
+            width: 7px; height: 7px; flex-shrink: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            box-shadow: 0 0 7px var(--accent-purple);
+            border-radius: 50%;
+        }
+        .footer-info-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.79rem; color: var(--text-muted);
+            margin-bottom: 12px; line-height: 1.55;
+        }
+        .footer-info-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
         .footer-bottom {
-            Max-width:900px; margin:0 auto; padding-top:22px;
-            Border-top:1px solid var(--glass-border);
-            Display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+            position: relative; z-index: 1;
+            max-width: 900px; margin: 36px auto 0;
+            padding-top: 22px;
+            border-top: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 12px;
         }
-        .footer-copy { font-size:0.72rem; color:var(--text-muted); letter-spacing:0.5px; }
-        .footer-copy span { color:var(--accent); font-weight:700; }
-        .footer-chip { padding:5px 12px; background:var(--glass); border:1px solid var(--glass-border); border-radius:100px; font-size:0.68rem; color:var(--text-muted); font-weight:600; letter-spacing:0.5px; }
-        [data-theme="light"] .site-footer { background:rgba(255,255,255,0.6); border-top-color:rgba(100,100,200,0.2); }
-        [data-theme="light"] .footer-logo { color:#12123a; }
-        [data-theme="light"] .footer-tagline { color:#0078a8; }
-        [data-theme="light"] .footer-tagline-dot { background:#0078a8; }
-        [data-theme="light"] .footer-copy span { color:#0078a8; }
-        [data-theme="light"] .footer-chip { background:rgba(255,255,255,0.8); }
-
-        /* RESPONSIF - DESKTOP (>= 1024px) */
-        @media (min-width:1024px) {
-            .footer-inner { grid-template-columns:1.5fr 1fr 1.5fr; }
+        .footer-copy {
+            font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.5px;
         }
-
-        /* RESPONSIF - TABLET (600px - 1023px) */
-        @media (max-width:1023px) {
-            .site-footer { padding:40px 30px 24px; }
-            .footer-inner { grid-template-columns:1fr 1fr; gap:28px; }
-            .footer-inner > div:last-child { grid-column:1 / -1; }
-            .footer-bottom { padding-top:18px; }
+        .footer-copy span { color: var(--accent); font-weight: 700; }
+        .footer-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            font-size: 0.67rem; color: var(--text-muted);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
         }
 
-        /* RESPONSIF - SMARTPHONE (< 600px) */
-        @media (max-width:600px) {
-            .site-footer { padding:32px 20px 20px; }
-            .footer-inner { grid-template-columns:1fr; gap:22px; }
-            .footer-inner > div:last-child { grid-column:auto; }
-            .footer-logo { font-size:1rem; }
-            .footer-bottom {
-                Flex-direction:column; align-items:flex-start; gap:14px;
+        /* UKURAN TABLET */
+        @media(min-width:701px) and (max-width:1024px) {
+            .container { max-width:98%; padding:50px 24px 70px; gap:28px; }
+
+            /* INTRO — tablet */
+            .intro-logo { font-size:clamp(1.8rem,6vw,3rem); letter-spacing:-1px; }
+            .intro-sub  { font-size:0.7rem; letter-spacing:3px; }
+
+            /* HEADER — tablet */
+            .header { padding:48px 32px 40px; border-radius:36px; }
+            .logo   { font-size:clamp(2rem,5.5vw,3.2rem); }
+            .header > p { font-size:0.68rem; letter-spacing:3px; padding-top:12px; }
+
+            /* KARTU — tablet */
+            .card { padding:32px 28px; }
+
+            /* GRID FORM — 4 kolom → 2 kolom pada tablet */
+            .form-grid-4 { grid-template-columns:1fr 1fr; }
+
+            /* LEGER EXPORT BUTTONS — biar tidak terlalu sempit */
+            .leger-header { gap:14px; }
+            .btn-export   { padding:10px 16px; font-size:0.72rem; }
+
+            /* FOOTER — 2 kolom pada tablet */
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
             }
-            .footer-inner > div { text-align:center; }
-            .footer-tagline { justify-content:center; }
-            .footer-member { justify-content:center; }
-            .footer-info-row { justify-content:center; }
-            .footer-col-title { text-align:center; }
-            .footer-desc { text-align:center; }
-            .footer-copy { font-size:0.7rem; }
-            .footer-chip { font-size:0.65rem; padding:4px 10px; }
+            /* Branding kolom penuh pada tablet */
+            .footer-inner > div:first-child {
+                grid-column: 1 / -1;
+            }
+            .footer-desc { max-width: 100%; }
+            .site-footer { padding: 40px 24px 28px; }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        /* UKURAN MOBILE= */
+        @media(max-width:700px) {
+
+            /* CONTAINER */
+            .container { padding:36px 12px 64px; gap:20px; }
+
+            /* ── INTRO SCREEN ── */
+            #introScreen { gap:16px; padding:0 16px; }
+            .intro-logo {
+                font-size:clamp(1.4rem,7.5vw,2.2rem);
+                letter-spacing:-0.5px;
+                padding:0 12px;
+                line-height:1.2;
+            }
+            .intro-sub {
+                font-size:0.62rem;
+                letter-spacing:2px;
+                padding:0 8px;
+                line-height:1.6;
+            }
+            .intro-bar-wrap { width:min(260px,82vw); }
+
+            /* ── TOMBOL TEMA ── */
+            .theme-toggle { width:42px; height:42px; top:12px; right:12px; font-size:1.1rem; }
+
+            /* ── HEADER ── */
+            .header {
+                padding:32px 16px 28px;
+                border-radius:24px;
+            }
+            .logo {
+                font-size:clamp(1rem,6vw,2rem);
+                letter-spacing:-1px;
+                line-height:1.15;
+            }
+            .header > p {
+                font-size:0.45rem;
+                letter-spacing:2px;
+                padding-top:10px;
+                line-height:1.7;
+            }
+
+            /* ── KARTU ── */
+            .card { padding:20px 16px; border-radius:20px; }
+            .section-title { font-size:1.1rem; margin-bottom:20px; gap:8px; }
+
+            /* ── FORM GRID ── */
+            .form-row          { grid-template-columns:1fr; }
+            .form-grid-2       { grid-template-columns:1fr; }
+            .form-grid-3       { grid-template-columns:1fr 1fr; }
+            .form-grid-4       { grid-template-columns:1fr 1fr; }
+
+            /* ── INPUT & SELECT ── */
+            input, select { padding:13px 16px; font-size:0.88rem; border-radius:13px; }
+            .label-sm { font-size:0.6rem; letter-spacing:1.5px; }
+
+            /* ── BOBOT CHIP ── */
+            .bobot-info { gap:7px; }
+            .bobot-chip { font-size:0.62rem; padding:4px 10px; letter-spacing:0.5px; }
+
+            /* ── TOMBOL ── */
+            .btn-cosmic { padding:16px; font-size:0.82rem; letter-spacing:1.5px; border-radius:15px; }
+            .btn-export { padding:9px 14px; font-size:0.68rem; letter-spacing:1px; }
+
+            /* ── NAV TABS ── */
+            .nav-tabs { padding:6px; gap:5px; border-radius:18px; }
+            .nav-tab  { padding:10px 8px; font-size:0.62rem; min-width:60px; letter-spacing:0.5px; border-radius:12px; }
+            .nav-tab img { display:none; }
+
+            /* ── STATISTIK LEGER ── */
+            .stat-row { grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+            .stat-box { padding:14px 10px; border-radius:14px; }
+            .stat-label { font-size:0.56rem; letter-spacing:1.5px; }
+            .stat-val { font-size:1.5rem; }
+
+            /* ── LEGER HEADER & TOMBOL EXPORT ── */
+            .leger-header { flex-direction:column; align-items:flex-start; gap:10px; }
+            .leger-header > div { display:flex; flex-wrap:wrap; gap:7px; width:100%; }
+            .leger-header .btn-export { flex:1; text-align:center; font-size:0.66rem; padding:9px 10px; }
+
+            /* ── TABEL ── */
+            .data-table { font-size:0.78rem; }
+            .data-table th { padding:10px 12px; font-size:0.58rem; letter-spacing:1.5px; }
+            .data-table td { padding:10px 12px; }
+
+            /* ── PREVIEW NILAI AKHIR ── */
+            #previewNilaiAkhir > div {
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+            #prevNilaiAkhir, #prevPredikat { font-size:1.9rem; }
+            #prevKKM { font-size:0.9rem; }
+
+            /* ── HASIL ANALISIS ── */
+            .result-grid { grid-template-columns:1fr 1fr; gap:10px; }
+            .result-box { padding:16px 12px; border-radius:16px; }
+            .val { font-size:1.5rem; }
+            .status-header { font-size:0.72rem; letter-spacing:1.5px; padding:10px; }
+
+            /* ── MAPEL CARD ── */
+            .mapel-card { padding:12px 14px; gap:10px; border-radius:14px; }
+            .mapel-nama { font-size:0.84rem; }
+            .mapel-detail { font-size:0.66rem; }
+
+            /* ── MODAL ── */
+            .modal-overlay { padding:12px; }
+            .modal-box { padding:20px 14px; border-radius:20px; max-height:92vh; }
+            .modal-close { top:14px; right:14px; width:32px; height:32px; font-size:0.88rem; }
+
+            /* ── RAPOR MODAL DALAM ── */
+            .rapor-header { margin-bottom:16px; }
+            .rapor-logo { font-size:1.1rem; }
+            .rapor-sub { font-size:0.6rem; letter-spacing:2px; }
+            .rapor-siswa-info { grid-template-columns:1fr; gap:8px; }
+            .rapor-summary { grid-template-columns:1fr 1fr; gap:8px; }
+            .rapor-sum-val { font-size:1.3rem; }
+
+            /* ── NILAI SECTION ── */
+            .nilai-section { padding:16px; border-radius:14px; }
+
+            /* ── EMPTY STATE ── */
+            .empty-state { padding:30px 16px; }
+
+            /* ── TOAST ── */
+            .toast { right:12px; bottom:16px; left:12px; text-align:center; font-size:0.82rem; padding:13px 18px; }
+
+            /* ── FOOTER — MOBILE ── */
+            .site-footer {
+                padding: 28px 14px 22px;
+                margin-top: 10px;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                text-align: center;
+            }
+            .footer-inner > div { width: 100%; }
+            .footer-logo { font-size: 1rem; margin-bottom: 8px; }
+            .footer-desc {
+                max-width: 100%;
+                font-size: 0.75rem;
+                line-height: 1.65;
+                margin: 0 auto;
+            }
+            .footer-tagline { margin-top: 12px; font-size: 0.62rem; padding:5px 12px; }
+            .footer-col-title { font-size: 0.58rem; letter-spacing: 2.5px; margin-bottom: 12px; }
+            .footer-member {
+                justify-content: center;
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+                gap: 8px;
+            }
+            .footer-info-row {
+                justify-content: center;
+                font-size: 0.72rem;
+                margin-bottom: 9px;
+                text-align: left;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .footer-info-icon { font-size: 0.9rem; }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+                margin-top: 22px;
+                padding-top: 16px;
+            }
+            .footer-copy { font-size: 0.65rem; }
+            .footer-chip { font-size: 0.6rem; padding: 4px 10px; }
+            .footer-bottom > div { justify-content: center; }
+        }
+
+        /* UKURAN HP SANGAT KECIL */
+        @media(max-width:360px) {
+            .intro-logo { font-size:clamp(1.2rem,7vw,1.8rem); }
+            .intro-sub  { font-size:0.56rem; letter-spacing:1.5px; }
+            .logo       { font-size:clamp(1rem,6vw,2rem); }
+            .header-sub  {margin-top:16px;font-size:0.45rem;letter-spacing:2px;opacity:0.55;color:var(--text-muted);text-align:center;max-width:100%;}
+            .nav-tab    { font-size:0.58rem; padding:9px 6px; }
+            .stat-val   { font-size:1.3rem; }
+            .result-grid { grid-template-columns:1fr; }
         }
