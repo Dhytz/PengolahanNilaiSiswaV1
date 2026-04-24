@@ -307,6 +307,56 @@
         .export-option-label { font-size:0.8rem; font-weight:700; }
         .export-option-desc { font-size:0.66rem; color:var(--text-muted); margin-top:3px; }
 
+/* CETAK RAPOR */
+        @media print {
+            /* Sembunyikan semua elemen kecuali konten rapor */
+            body > *:not(.modal-overlay) { display:none !important; }
+
+            .modal-overlay {
+                Position:static !important;
+                Background:none !important;
+                Backdrop-filter:none !important;
+                Padding:0 !important;
+                Display:block !important;
+                Opacity:1 !important;
+                Pointer-events:none;
+            }
+
+            .modal-box {
+                Position:static !important;
+                Border:none !important;
+                Border-radius:0 !important;
+                Padding:20px !important;
+                Max-width:100% !important;
+                Max-height:none !important;
+                Overflow:visible !important;
+                Transform:none !important;
+                Box-shadow:none !important;
+                Background:#fff !important;
+            }
+
+            /* Sembunyikan tombol dan elemen non-rapor */
+            .modal-close  { display:none !important; }
+            .btn-export   { display:none !important; }
+
+            /* Hindari tabel terpotong antar halaman */
+            .rapor-nilai-table { page-break-inside:avoid; }
+            .rapor-summary     { page-break-inside:avoid; }
+            .rapor-siswa-info  { page-break-inside:avoid; }
+
+            /* Warna teks agar terbaca saat dicetak */
+            .rapor-logo { color:#000 !important; -webkit-text-fill-color:#000 !important; }
+            .rapor-nilai-table th { background:#eeeeee !important; color:#000 !important; }
+            .rapor-nilai-table td { color:#000 !important; border-color:#cccccc !important; }
+            .rapor-sum-box { border:1px solid #cccccc !important; background:#f9f9f9 !important; }
+            .rapor-sum-label { color:#555555 !important; }
+            .rapor-sum-val   { color:#000000 !important; }
+            .rapor-info-label { color:#555555 !important; }
+            .rapor-info-val   { color:#000000 !important; }
+            .rapor-divider { opacity:0.5; }
+            .rapor-sub { color:#555555 !important; }
+        }
+
         /* INPUT VALIDASI ERROR */
         input.input-error { border-color:#ef4444 !important; box-shadow:0 0 14px rgba(239,68,68,0.25) !important; }
 
